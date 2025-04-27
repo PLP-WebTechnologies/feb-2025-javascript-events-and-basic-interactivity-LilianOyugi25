@@ -1,0 +1,66 @@
+// Button click event to change text
+const changeTextBtn = document.getElementById('changeTextBtn');
+changeTextBtn.addEventListener('click', () => {
+  changeTextBtn.textContent = "You clicked me!";
+  changeTextBtn.style.backgroundColor = 'lightblue';
+});
+
+// Hover effect
+const hoverText = document.getElementById('hoverText');
+hoverText.addEventListener('mouseover', () => {
+  hoverText.style.color = 'green';
+});
+hoverText.addEventListener('mouseout', () => {
+  hoverText.style.color = 'black';
+});
+
+// Keypress detection
+document.addEventListener('keypress', (e) => {
+  console.log(`Key pressed: ${e.key}`);
+});
+
+// Double-click event for bonus
+changeTextBtn.addEventListener('dblclick', () => {
+  alert('You double-clicked the button!');
+});
+
+// Form Validation
+const form = document.getElementById('validationForm');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const emailError = document.getElementById('emailError');
+const passwordError = document.getElementById('passwordError');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  let valid = true;
+
+  // Email validation
+  if (!emailInput.value.includes('@')) {
+    emailError.textContent = "Please enter a valid email.";
+    valid = false;
+  } else {
+    emailError.textContent = "";
+  }
+
+  // Password validation
+  if (passwordInput.value.length < 8) {
+    passwordError.textContent = "Password must be at least 8 characters long.";
+    valid = false;
+  } else {
+    passwordError.textContent = "";
+  }
+
+  if (valid) {
+    alert("Form submitted successfully!");
+  }
+});
+
+// Image gallery functionality (simple click change)
+const galleryImages = document.querySelectorAll('.gallery-img');
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    alert(`You clicked on: ${img.alt}`);
+  });
+});
